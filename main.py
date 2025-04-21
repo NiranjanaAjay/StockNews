@@ -37,9 +37,9 @@ percentage_change = round((abs(yesterday_closing - day_before_closing)/day_befor
 
 if percentage_change>=5:
     if yesterday_closing > day_before_closing:
-        MESSAGE = f"{STOCK} : 🔺{percentage_change}\n"
+        MESSAGE = f"{STOCK}% : 🔺{percentage_change}\n"
     else:
-        MESSAGE = f"{STOCK} : 🔻{percentage_change}\n"
+        MESSAGE = f"{STOCK}% : 🔻{percentage_change}\n"
     client.messages.create(
         body=MESSAGE,
         from_="+17542871306",
