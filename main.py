@@ -25,7 +25,6 @@ parameters ={
 response = requests.get(url="https://www.alphavantage.co/query",params=parameters)
 response.raise_for_status()
 stock_data = response.json()
-print(stock_data)
 
 daily_stock = stock_data["Time Series (Daily)"]
 dates = list(daily_stock.keys())
@@ -33,7 +32,7 @@ dates = list(daily_stock.keys())
 yesterday_closing = float(daily_stock[dates[1]]["4. close"])
 day_before_closing = float(daily_stock[dates[2]]["4. close"])
 
-percentage_change = round((abs(yesterday_closing - day_before_closing)/day_before_closing)*100, 1)*2
+percentage_change = round((abs(yesterday_closing - day_before_closing)/day_before_closing)*100, 1)
 
 if percentage_change>=5:
     if yesterday_closing > day_before_closing:
@@ -52,7 +51,7 @@ if percentage_change>=5:
                                               country='us')
     for i in range(2):
         headline = top_headlines['articles'][i]['title']
-        brief = top_headlines['articles'][i]['title']
+        brief = top_headlines['articles'][i]['description']
 
         MESSAGE = f"Headline: {headline}\nBrief: {brief}"
         client.messages.create(
